@@ -1,0 +1,21 @@
+.button1 {
+  background-color: white;
+  color: rgba(10, 99, 242);
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(10, 99, 242);
+}
+
+.button2 {
+  background-color: rgba(10, 99, 242);
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  border: transparent;
+}
+
+#buttonDiv {
+  text-align: right;
+}

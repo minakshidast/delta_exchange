@@ -1,0 +1,154 @@
+.container {
+  text-align: center;
+  width: 100%;
+  height: 550px;
+  background-image: url("https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg");
+}
+.hidden {
+  display: none;
+}
+.middle {
+  width: 100%;
+  margin: auto;
+  margin-left: 5%;
+  padding: 3%;
+}
+.formed {
+  width: 100%;
+  margin: auto;
+}
+.linkbuttons {
+  width: 15%;
+  justify-content: center;
+  height: 45px;
+  border-radius: 15px;
+  background-color: rgb(229, 124, 216);
+  color: white;
+  margin-bottom: 5%;
+}
+.bottom {
+  text-align: center;
+}
+.main {
+  background-color: rgba(44, 19, 56, 255);
+  padding: 5%;
+  width: 45%;
+  margin: auto;
+  color: white;
+  display: block;
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 4;
+  color: #fce5d8;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  margin-top: -5%;
+  opacity: 1;
+}
+.h1log {
+  width: 100%;
+  font-family: "GT Haptik Medium", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.25;
+
+  margin-bottom: 25px;
+  text-align: center;
+}
+.h3log {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.333;
+
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input1log {
+  background: transparent;
+  border: 2px solid #aba0af;
+  height: 40px;
+  width: 86%;
+  margin-top: 0px;
+  border-color: white;
+  padding-left: 15px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #fce5d8;
+}
+
+.btn2log {
+  font-family: "GT Haptik Medium", sans-serif;
+  font-size: 1rem;
+  padding: 14px 50px;
+  background-color: #e57cd8;
+  color: #fff;
+  text-align: center;
+  width: 90%;
+  border-radius: 25px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.28;
+}
+
+.btn2log:hover {
+  background-color: rgba(65, 42, 76, 255);
+}
+.google {
+  background-color: white;
+  width: 45%;
+  color: black;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "GT Haptik Medium", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 70px;
+  color: white;
+}
+
+.btnlog {
+  width: 150px;
+  font-family: "GT Haptik Medium", sans-serif;
+  font-size: 1rem;
+  padding: 14px 50px;
+  background-color: #e57cd8;
+  color: #fff;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.28;
+}
+
+.btn3log {
+  width: 90%;
+  font-family: "GT Haptik Medium", sans-serif;
+  font-size: 1rem;
+  padding: 14px 50px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.28;
+}
+.googleimg {
+  width: 20px;
+  height: 20px;
+}

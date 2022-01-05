@@ -1,44 +1,115 @@
 import {
-  GIT_FAILURE,
-  GIT_REQUEST,
-  GIT_SUCCESS,
-  USER_FAILURE,
-  USER_REQUEST,
-  USER_SUCCESS,
+  GET_DATA_FAILURE,
+  GET_DATA_REQUEST,
+  GET_DATA_SUCCESS,
+  ADD_DATA_REQUEST,
+  ADD_DATA_SUCCESS,
+  ADD_DATA_FAILURE,
+  DELETE_DATA_REQUEST,
+  DELETE_DATA_SUCCESS,
+  DELETE_DATA_FAILURE,
+  FILTER_DATA_REQUEST,
+  FILTER_DATA_SUCCESS,
+  FILTER_DATA_FAILURE,
 } from "./actionTypes";
 
-const init = {
-  userdet: "",
-  git: [],
+const iniState = {
+  data: [],
+  isLoading: false,
+  isError: true,
 };
 
-export const userReducer = (state = init, { type, payload }) => {
+export const appReducer = (state = iniState, { type, payload }) => {
+  console.log(state.payload);
   switch (type) {
-    case USER_SUCCESS:
+    case GET_DATA_REQUEST:
       return {
         ...state,
-        userdet: payload,
+        isLoading: true,
+        isError: false,
       };
-    case USER_REQUEST:
+    case GET_DATA_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        isError: false,
+        data: payload,
       };
-    case USER_FAILURE:
+    case GET_DATA_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        isError: true,
       };
-    case GIT_REQUEST:
+    case ADD_DATA_REQUEST:
       return {
         ...state,
+        isLoading: true,
+        isError: false,
       };
-    case GIT_SUCCESS:
+    case ADD_DATA_SUCCESS:
       return {
         ...state,
-        git: payload,
+        isLoading: false,
+        isError: false,
+        data: [...state.data, payload],
       };
-    case GIT_FAILURE:
+    case ADD_DATA_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        isError: true,
+      };
+    case DELETE_DATA_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case DELETE_DATA_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: [...state.data, payload],
+      };
+    case DELETE_DATA_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    case ADD_DATA_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: [...state.data, payload],
+      };
+    case ADD_DATA_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    case FILTER_DATA_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case FILTER_DATA_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: [...state.data, payload],
+      };
+    case FILTER_DATA_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
       };
     default:
       return state;

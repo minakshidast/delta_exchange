@@ -1,79 +1,127 @@
 import axios from "axios";
 import {
-  GIT_FAILURE,
-  GIT_REQUEST,
-  GIT_SUCCESS,
-  USER_FAILURE,
-  USER_REQUEST,
-  USER_SUCCESS,
-} from "../actionTypes";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+  GET_DATA_FAILURE,
+  GET_DATA_REQUEST,
+  GET_DATA_SUCCESS,
+  ADD_DATA_REQUEST,
+  ADD_DATA_SUCCESS,
+  ADD_DATA_FAILURE,
+  DELETE_DATA_REQUEST,
+  DELETE_DATA_SUCCESS,
+  DELETE_DATA_FAILURE,
+  FILTER_DATA_REQUEST,
+  FILTER_DATA_SUCCESS,
+  FILTER_DATA_FAILURE,
+} from "./actionTypes";
 
-export const userRequest = () => {
+export const getDataRequest = (data) => {
   return {
-    type: USER_REQUEST,
+    type: GET_DATA_REQUEST,
+    payload: data,
   };
 };
-export const userSucceess = (payload) => {
-  return {
-    type: USER_SUCCESS,
-    payload,
-  };
+export const getData = (payload) => (dispatch) => {
+  dispatch(getDataRequest());
+  axios("http://localhost:3005/data")
+    .then((res) => dispatch(getDataSuccess(res.data)))
+    .catch((error) => dispatch(getDataFailure(error)));
 };
 
-export const userFailure = () => {
+export const getDataSuccess = (data) => {
   return {
-    type: USER_FAILURE,
-  };
-};
-export const userDetails =
-  ({ username, token }) =>
-  async (dispatch) => {
-    dispatch(userRequest());
-    try {
-      let res = await axios.get(
-        `https://masai-api-mocker.herokuapp.com/user/${username}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      dispatch(userSucceess(res.data));
-      console.log(res.data);
-    } catch (error) {
-      dispatch(userFailure());
-    }
-  };
-
-export const gitRequest = () => {
-  return {
-    type: GIT_REQUEST,
-  };
-};
-export const gitSucceess = (payload) => {
-  return {
-    type: GIT_SUCCESS,
-    payload,
+    type: GET_DATA_SUCCESS,
+    payload: data,
   };
 };
 
-export const gitFailure = () => {
+export const getDataFailure = (err) => {
   return {
-    type: GIT_FAILURE,
+    type: GET_DATA_FAILURE,
+    payload: err,
   };
 };
 
-export const gitUser = (user, page) => async (dispatch) => {
-  dispatch(gitRequest());
-  try {
-    let res = await axios.get(
-      `https://api.github.com/search/users?q=${user}&page=${page}&per_page=5`
-    );
-    dispatch(gitSucceess(res.data.items));
-    console.log(res.data.items);
-  } catch (error) {
-    dispatch(gitFailure());
-  }
+export const addDataRequest = (data) => {
+  return {
+    type: ADD_DATA_REQUEST,
+    payload: data,
+  };
+};
+export const addData = (payload) => (dispatch) => {
+  dispatch(addDataRequest());
+  axios
+    .post("http://localhost:3005/data", payload)
+    .then((res) => dispatch(addDataSuccess(res.data)))
+    .catch((error) => dispatch(addDataFailure(error)))
+    .finally(() => dispatch(getData()));
+};
+
+export const addDataSuccess = (data) => {
+  return {
+    type: ADD_DATA_SUCCESS,
+    payload: data,
+  };
+};
+
+export const addDataFailure = (err) => {
+  return {
+    type: ADD_DATA_FAILURE,
+    payload: err,
+  };
+};
+
+export const deleteDataRequest = (data) => {
+  return {
+    type: DELETE_DATA_REQUEST,
+    payload: data,
+  };
+};
+export const deleteData = (id) => (dispatch) => {
+  dispatch(deleteDataRequest());
+  axios
+    .delete(`http://localhost:3005/data/${id}`)
+    .then((res) => dispatch(deleteDataSuccess(res.data)))
+    .catch((error) => dispatch(deleteDataFailure(error)))
+    .finally(() => dispatch(getData()));
+};
+
+export const deleteDataSuccess = (data) => {
+  return {
+    type: DELETE_DATA_SUCCESS,
+    payload: data,
+  };
+};
+
+export const deleteDataFailure = (err) => {
+  return {
+    type: DELETE_DATA_FAILURE,
+    payload: err,
+  };
+};
+
+export const filterDataRequest = (data) => {
+  return {
+    type: FILTER_DATA_REQUEST,
+    payload: data,
+  };
+};
+export const filterData = (company) => (dispatch) => {
+  dispatch(filterDataRequest());
+  axios(`http://localhost:3005/data?company=${company}`)
+    .then((res) => dispatch(filterDataSuccess(res.data)))
+    .catch((error) => dispatch(filterDataFailure(error)));
+};
+
+export const filterDataSuccess = (data) => {
+  return {
+    type: FILTER_DATA_SUCCESS,
+    payload: data,
+  };
+};
+
+export const filterDataFailure = (err) => {
+  return {
+    type: FILTER_DATA_FAILURE,
+    payload: err,
+  };
 };
